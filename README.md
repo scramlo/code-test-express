@@ -9,14 +9,15 @@ A simple Express app designed to provide a basic API for our code test.
 ### Setup
 
 1. Run `npm install` to install dependencies (skip this step if using Docker)
+    * If trouble, run `npm install --legacy-peer-deps`
 
-1. Run `npm run migrate` to migrate your development database
+2. Run `npm run migrate` to migrate your development database
 
-1. Run `npm run seed` to seed your development database
+3. Run `npm run seed` to seed your development database
 
-1. Run `npm start` to start up the local development server (skip this step if using Docker)
+4. Run `npm start` to start up the local development server (skip this step if using Docker)
 
-You should get JSON output from http://localhost:3000/members
+You should get JSON output from <http://localhost:3000/members>
 
 ### Testing
 
@@ -24,7 +25,7 @@ Run `npm test` to run the test suite.
 
 ### Docker
 
-As an alternative to installing node directly, you can use the provided Docker files to run the app and test suite. 
+As an alternative to installing node directly, you can use the provided Docker files to run the app and test suite.
 
 Run `docker-compose up -d` to start the Docker container, then run the [Setup tasks](#setup) above, prepending `docker-compose exec web` to the command (e.g. `docker-compose exec web npm run migrate`)
 

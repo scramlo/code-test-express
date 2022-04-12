@@ -9,11 +9,11 @@ function arraySample(array) {
   return length ? array[baseRandom(0, length - 1)] : undefined;
 }
 
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('subscriptions')
     .del()
-    .then(function() {
+    .then(function () {
       const subscriptions = [
         {
           name: 'Silver',
@@ -37,17 +37,17 @@ exports.seed = function(knex, Promise) {
 
       return knex('subscriptions').insert(subscriptions);
     })
-    .then(function() {
+    .then(function () {
       return knex('members')
         .del()
-        .then(function() {
+        .then(function () {
           return knex.table('subscriptions').pluck('id');
         })
-        .then(function(subscription_ids) {
+        .then(function (subscription_ids) {
           const members = Array.from({ length: 10 }, () => ({
-            name: faker.name.findName(),
-            email: faker.internet.email(),
-            phone: faker.phone.phoneNumber(),
+            name: faker.faker.name.findName(),
+            email: faker.faker.internet.email(),
+            phone: faker.faker.phone.phoneNumber(),
             subscription_id: arraySample(subscription_ids),
             created_at: knex.fn.now(),
             updated_at: knex.fn.now()
