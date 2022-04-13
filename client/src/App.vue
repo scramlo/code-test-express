@@ -15,7 +15,7 @@
         <v-row align="center" justify="center">
           <v-col>
             <h1>Carney Members</h1>
-            <DataTable :headers="tableData.headers" :items="reactiveItems" :loading="tableData.loading"/>
+            <MemberTable :headers="tableData.headers" :items="reactiveItems" :loading="tableData.loading" />
           </v-col>
         </v-row>
       </v-container>    
@@ -26,7 +26,7 @@
 
 <script>
 // Components
-import DataTable from './components/DataTable';
+import MemberTable from './components/MemberTable';
 import MessagePopover from './components/MessagePopover';
 
 // API
@@ -35,7 +35,7 @@ import { getMembers } from './api';
 export default {
   name: 'App',
   components: {
-    DataTable,
+    MemberTable,
     MessagePopover,
   },
   async beforeMount() {
@@ -70,13 +70,6 @@ export default {
       },
       tableData: {
         loading: true,
-        headers: [
-          { text: 'Name', value: 'name' },
-          { text: 'Email', value: 'email' },
-          { text: 'Phone', value: 'phone' },
-          { text: 'Updated', value: 'updated_at' },
-          { text: 'Created', value: 'created_at' },
-        ],
         items: [],
       },
      };

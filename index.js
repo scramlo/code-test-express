@@ -21,7 +21,7 @@ app.get('/api/members', cors(), async (_req, res) => {
     membersWithSubscriptions = members.map(member => {
       return {
         ...member.attributes,
-        subscription: subscriptions.filter(sub => sub.id === member.attributes.subscription_id),
+        subscription: subscriptions.filter(sub => sub.id === member.attributes.subscription_id)[0],
       };
     });
     res.json(membersWithSubscriptions);
