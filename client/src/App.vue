@@ -14,6 +14,7 @@
       <v-container fill-height>
         <v-row align="center" justify="center">
           <v-col>
+            <h1>Carney Members</h1>
             <DataTable :headers="tableData.headers" :items="reactiveItems"/>
           </v-col>
         </v-row>
