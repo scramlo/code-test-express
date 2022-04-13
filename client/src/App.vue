@@ -15,7 +15,7 @@
         <v-row align="center" justify="center">
           <v-col>
             <h1>Carney Members</h1>
-            <DataTable :headers="tableData.headers" :items="reactiveItems"/>
+            <DataTable :headers="tableData.headers" :items="reactiveItems" :loading="tableData.loading"/>
           </v-col>
         </v-row>
       </v-container>    
@@ -40,6 +40,7 @@ export default {
   },
   async beforeMount() {
     let memberApiResponse = await getMembers();
+    this.tableData.loading = false;
     if ( memberApiResponse.error ) {
       this.messageData.text = `
         <p>
@@ -50,23 +51,25 @@ export default {
       this.messageData.show = true;
       this.messageData.timeout = -1;
     } else {
-      this.tableData.memberTableItems = memberApiResponse.data;
+      this.tableData.items = memberApiResponse.data;
+      console.log(this.tableData.memberTableItems = memberApiResponse.data)
     }
   },
   computed: {
     reactiveItems() {
-      return this.tableData.memberTableItems ?? [];
+      return this.tableData.items ?? [];
     },
   },
   data(){
     return {
       messageData: {
-        value: true,
-        text: 'This is my message',
-        color: 'error',
+        value: false,
+        text: '',
+        color: '',
         timeout: 5000,
       },
       tableData: {
+        loading: true,
         headers: [
           { text: 'Name', value: 'name' },
           { text: 'Email', value: 'email' },
