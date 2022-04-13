@@ -11,10 +11,9 @@
     </v-app-bar>
 
     <v-main class="main">
-      <v-container fill-height>
+      <v-container class="main__container">
         <v-row align="center" justify="center">
           <v-col>
-            <h1>Carney Members</h1>
             <MemberTable :headers="tableData.headers" :items="reactiveItems" :loading="tableData.loading" />
           </v-col>
         </v-row>
@@ -80,5 +79,9 @@ export default {
 <style lang="scss" scoped>
   .main {
     background: url('https://www.toptal.com/designers/subtlepatterns/uploads/double-bubble-outline.png');
+
+    &__container {
+      margin-top: 7vw;
+    }
   }
 </style>
