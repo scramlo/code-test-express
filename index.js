@@ -4,7 +4,7 @@ const cors = require('cors');
 const Member = require('./models/member');
 const Subscription = require('./models/subscription');
 
-app.get('/members', cors(), async (_req, res) => {
+app.get('/api/members', cors(), async (_req, res) => {
 
   let subscriptions = [];
   let members = [];
@@ -13,7 +13,7 @@ app.get('/members', cors(), async (_req, res) => {
   try {
     subscriptions = await Subscription.fetchAll();
   } catch (err) {
-    console.debug(err);
+    res.json({ error: true, message: err.message });
   }
 
   try {
@@ -26,7 +26,7 @@ app.get('/members', cors(), async (_req, res) => {
     });
     res.json(membersWithSubscriptions);
   } catch (err) {
-    console.debug(err);
+    res.json({ error: true, message: err.message });
   }
 });
 
