@@ -10,7 +10,7 @@
       </div>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="main">
       <v-container fill-height>
         <v-row align="center" justify="center">
           <v-col>
@@ -76,3 +76,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .main {
+    background: url('https://www.toptal.com/designers/subtlepatterns/uploads/double-bubble-outline.png');
+  }
+</style>
