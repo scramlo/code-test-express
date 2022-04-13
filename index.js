@@ -2,11 +2,32 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const Member = require('./models/member');
+const Subscription = require('./models/subscription');
 
-app.get('/members', cors(), (_req, res) => {
-  Member.fetchAll()
-    .then(members => res.json({ error: false, data: members.toJSON() }))
-    .catch(error => console.error(error));
+app.get('/members', cors(), async (_req, res) => {
+
+  let subscriptions = [];
+  let members = [];
+  let membersWithSubscriptions = [];
+
+  try {
+    subscriptions = await Subscription.fetchAll();
+  } catch (err) {
+    console.debug(err);
+  }
+
+  try {
+    members = await Member.fetchAll();
+    membersWithSubscriptions = members.map(member => {
+      return {
+        ...member.attributes,
+        subscription: subscriptions.filter(sub => sub.id === member.attributes.subscription_id),
+      };
+    });
+    res.json(membersWithSubscriptions);
+  } catch (err) {
+    console.debug(err);
+  }
 });
 
 const port = process.env.PORT || 3000;
