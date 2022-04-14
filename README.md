@@ -8,15 +8,15 @@ This app retrieves Member and Subscription data from a backend service and displ
 
 ![screenshot](./screenshot.png)
 
-## How to Install
+## How to Install and Run
 
 1. Go to root dir and execute `npm install --legacy-peer-deps`
-2. Go to root dir `/client` and execute `yarn`
-
-## How to Run
-
-1. Go to root dir and execute `npm start`
-2. Go to root dir `/client` and execute `yarn serve`
+2. Execute `npm run migrate` to migrate your development database
+3. Execute `npm run seed` to seed your development database
+4. Execute `npm start`
+5. Create new terminal instance and navigate to `/client` and execute `yarn install`
+6. Execute `yarn serve`
+7. Open browser to client server.
 
 ## My Process
 
@@ -25,6 +25,10 @@ This app retrieves Member and Subscription data from a backend service and displ
 - Consider whether to map data on API call, or client side.
 - Decided on call. Ended up writing the DTOs in a way that made sense to me.
 - Add client folder and frontend framework.
+- Create API layer
+- Create app-level notifications
+- Create UI components
+- Keep logic in one place ( app layer ) In a traditional app I would have probably taken time to use Vuex or create some kind of composables to take care of the logic and keep components view-based.
 - Style components
 - Write tests
 
@@ -70,7 +74,6 @@ A simple Express app designed to provide a basic API for our code test.
 ### Setup
 
 1. Run `npm install` to install dependencies (skip this step if using Docker)
-    - If trouble, run `npm install --legacy-peer-deps`
 
 2. Run `npm run migrate` to migrate your development database
 
