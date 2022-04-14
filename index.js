@@ -18,13 +18,22 @@ app.get('/api/members', cors(), async (_req, res) => {
 
   try {
     members = await Member.fetchAll();
+    const subscriptionsWithCount = subscriptions.map(
+      sub => {
+        return {
+          ...sub.attributes,
+          memberCount: members.filter(member => member.attributes.subscription_id === sub.id).length,
+        }
+      }
+    );
     membersWithSubscriptions = members.map(member => {
+      const memberSubscription = subscriptionsWithCount.find(sub => sub.id === member.attributes.subscription_id);
       return {
         ...member.attributes,
-        subscription: subscriptions.filter(sub => sub.id === member.attributes.subscription_id)[0],
+        subscription: { ...memberSubscription },
       };
     });
-    res.json(membersWithSubscriptions);
+    res.json({ subscriptionsWithCount, membersWithSubscriptions });
   } catch (err) {
     res.json({ error: true, message: err.message });
   }
