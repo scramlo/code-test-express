@@ -55,6 +55,8 @@ Since I am currently a full-time Frontend Developer for B2B apps, I very much mi
 
 As always, I also enjoyed thinking how I client might like to experience this application and did my best to make it function well, look great, and be flexible for different devices.
 
+I would have liked to have encapsulate some of the logic and DRY things up ( like with the chart component and side panel ), but for time's sake, I could not.
+
 ---
 
 # Code Test: Node ( Original Readme )
