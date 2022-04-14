@@ -55,7 +55,6 @@ export default {
       this.tableData.items = memberApiResponse.data.membersWithSubscriptions;
       this.subscriptionData = memberApiResponse.data.subscriptionsWithCount;
       this.loading = false;
-      console.log('sub data', this.subscriptionData);
     }
   },
   computed: {
