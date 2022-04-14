@@ -85,10 +85,10 @@ export default {
       return '400px';
     },
     averagePrice() {
-      return this.chartData.datasets[0].data.reduce(
+      return this.chartData.datasets[1].data.reduce(
         (acc, curr) => acc + curr,
         0
-      ) / this.chartData.datasets[0].data.length;
+      ) / this.chartData.datasets[1].data.length;
     },
   },
   data() {
